@@ -13,7 +13,7 @@ The goal is to share the architecture and guardrails without publishing private 
 - Neutral runtime and privacy defaults in `policies/`
 - Example capability scaffolding in `capabilities/`
 - Sample inbox input and an empty outbox
-- A placeholder memory directory for private deployments
+- A placeholder memory directory for private deployments, including an initial `outcomes.jsonl` file for future append-only memory
 
 ## Public vs. private
 
@@ -23,6 +23,20 @@ This repository intentionally separates two layers:
 - Private runtime: local memory, environment-specific tuning, and learned behavior
 
 The public version should be useful on its own, but it should not carry the accumulated knowledge of a private deployment.
+
+## Modes of use
+
+### 1. Template mode (default)
+
+- `memory/` is treated as private state
+- each agent learns independently
+- the repository stays clean and portable
+
+### 2. Sync mode (advanced)
+
+- `memory/` is committed and shared intentionally
+- agents can inherit collective experience
+- this is useful when you want multiple instances to stay aligned
 
 ## Quick start
 
@@ -49,4 +63,5 @@ VERSION
 
 - Adjust `policies/runtime_rules.json` for your environment.
 - Add new capabilities under `capabilities/`.
-- Keep `memory/` empty in the public repo and populate it only in private deployments.
+- Keep `memory/` empty in the public repo or use it as a deliberate sync surface in advanced deployments.
+- If you adopt append-only memory, write one JSON object per line to `memory/outcomes.jsonl`.

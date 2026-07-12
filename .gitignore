@@ -5,6 +5,7 @@ Thumbs.db
 # Private runtime state should stay out of the public template
 memory/*
 !memory/README.md
+!memory/outcomes.jsonl
 outbox/*
 !outbox/.gitkeep
 
