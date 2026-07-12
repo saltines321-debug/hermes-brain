@@ -1,0 +1,5 @@
+{
+  "local_first": true,
+  "retain_private_memory": false,
+  "redact_sensitive_fields": true
+}

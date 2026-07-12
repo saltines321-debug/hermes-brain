@@ -2,6 +2,12 @@
 .DS_Store
 Thumbs.db
 
+# Private runtime state should stay out of the public template
+memory/*
+!memory/README.md
+outbox/*
+!outbox/.gitkeep
+
 # Editor and IDE directories
 .vscode/
 .idea/
