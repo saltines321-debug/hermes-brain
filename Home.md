@@ -1,54 +1,57 @@
 # 🧠 Hermes Brain
 
-Welcome to the **Hermes Brain** wiki! This is the central hub for documentation, guides, and resources for the Hermes agentic sync system.
+Welcome to the **Hermes Brain** wiki! This is the central hub for documentation, guides, and resources for the Hermes Brain public template.
 
 ## 📚 Quick Navigation
 
-- **[[Getting Started]]** - Installation and initial setup
-- **[[Architecture]]** - System design and components
-- **[[API Reference]]** - Complete API documentation
-- **[[Configuration]]** - Setup and configuration guide
-- **[[Examples]]** - Usage examples and tutorials
-- **[[Troubleshooting]]** - Common issues and solutions
-- **[[Contributing]]** - Contribution guidelines
+- **[Getting Started](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/developer-setup.md)** - Installation and initial setup
+- **[Architecture](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/ARCHITECTURE.md)** - System design and components
+- **[Core Loop](https://github.com/saltines321-debug/hermes-brain/blob/main/brain.py)** - The minimal decision loop (`brain.py`)
+- **[Configuration](https://github.com/saltines321-debug/hermes-brain/blob/main/config/README.md)** - Runtime and privacy policy setup
+- **[Examples](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/examples/MODULAR_REFERENCE.md)** - Extension seams and usage patterns
+- **[Developer Experience](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/DEVEX.md)** - Local workflow, validation, and debugging
+- **[Contributing](https://github.com/saltines321-debug/hermes-brain/blob/main/CONTRIBUTING.md)** - Contribution guidelines
 
 ## 🚀 What is Hermes Brain?
 
-Hermes Brain is an agentic sync system designed to facilitate seamless synchronization and orchestration of autonomous agents. It provides a robust framework for managing agent lifecycle, inter-agent communication, and coordinated task execution.
+Hermes Brain is a **public, zero-knowledge template** for a modular agent skeleton. It ships the architecture and guardrails of an agentic system — a minimal core decision loop, capability hooks, a policy gate, and append-only memory — without embedding private history, learned behavior, or tuned configuration.
+
+It is a **starting point for building your own brain logic**, not a hosted platform or a distributed orchestration service. Clone it, then fill the extension seams (`core/`, `providers/`, `plugins/`) with your own behavior. The private runtime lives in your own deployment, not in this template.
 
 ## ⚡ Key Features
 
-- **Agent Orchestration** - Coordinate multiple autonomous agents
-- **Sync System** - Reliable state synchronization across agents
-- **Event-Driven Architecture** - React to and emit events in real-time
-- **Scalable Design** - Handle distributed agent networks
-- **Python-Based** - Built with Python for flexibility and ease of integration
+- **Modular skeleton** - A minimal core loop (`brain.py`) plus capability hooks you can extend (`capabilities/`).
+- **Policy gate** - Runtime and privacy rules that are safe by default (`allow_external_actions: false`, `retain_private_memory: false`, `redact_sensitive_fields: true`).
+- **Append-only memory** - Decisions and outcomes are logged to `memory/outcomes.jsonl`, one JSON object per line.
+- **Template vs. Sync modes** - Keep `memory/` private per agent, or commit and share it intentionally across instances.
+- **Public / private split** - Clean structure and guardrails ship publicly; private runtime state stays out of the template.
 
 ## 🛠️ Tech Stack
 
-- **Language**: Python
+- **Language**: Python (template core) with shell helper scripts (`scripts/`)
 - **License**: MIT
 - **Repository**: [saltines321-debug/hermes-brain](https://github.com/saltines321-debug/hermes-brain)
 
 ## 📖 Documentation Structure
 
 ### Core Concepts
-- [[Agent Lifecycle]] - Understanding agent creation, execution, and termination
-- [[Sync Mechanisms]] - How data synchronization works
-- [[Event System]] - Event handling and propagation
-- [[State Management]] - Agent state management and persistence
+
+- [Architecture](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/ARCHITECTURE.md) - Folder responsibilities and the template boundary
+- [Extension Seams](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/examples/MODULAR_REFERENCE.md) - `core -> providers -> plugins` dependency direction
+- [Configuration & Policies](https://github.com/saltines321-debug/hermes-brain/blob/main/config/README.md) - Runtime rules and privacy defaults
+- [State & Memory](https://github.com/saltines321-debug/hermes-brain/blob/main/memory/README.md) - Append-only outcomes and the Template/Sync mode split
 
 ### Development
-- [[Development Setup]] - Setting up your development environment
-- [[Testing]] - Testing guidelines and frameworks
-- [[Performance Optimization]] - Best practices for performance
-- [[Security]] - Security considerations and guidelines
+
+- [Development Setup](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/developer-setup.md) - Bootstrapping the project
+- [Developer Experience](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/DEVEX.md) - Validation, debugging, and coding standards
+- [Repository Standards](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/REPOSITORY_STANDARDS.md) - Branching, commits, releases
+- [Repository Setup](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/REPOSITORY_SETUP.md) - Branch protection and CI guidance
 
 ### Operations
-- [[Deployment]] - Deployment strategies and best practices
-- [[Monitoring]] - Monitoring and observability
-- [[Scaling]] - Scaling considerations
-- [[Maintenance]] - Maintenance and updates
+
+- [CI Workflows](https://github.com/saltines321-debug/hermes-brain/tree/main/.github/workflows) - Reusable quality, CI, and release pipelines
+- [Security Policy](https://github.com/saltines321-debug/hermes-brain/blob/main/SECURITY.md) - Reporting and handling guidance
 
 ## 🔗 External Resources
 
@@ -59,18 +62,21 @@ Hermes Brain is an agentic sync system designed to facilitate seamless synchroni
 ## 💡 Getting Help
 
 ### For Issues
-- Check [[Troubleshooting]] for common problems
+
+- Check the [Developer Experience](https://github.com/saltines321-debug/hermes-brain/blob/main/docs/DEVEX.md) debugging section
 - Search existing [GitHub Issues](https://github.com/saltines321-debug/hermes-brain/issues)
 - Create a new issue with detailed information
 
 ### For Questions
-- Review relevant documentation pages
+
+- Review relevant documentation pages linked above
 - Check [GitHub Discussions](https://github.com/saltines321-debug/hermes-brain/discussions)
 - Ask the community for guidance
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see [[Contributing]] for guidelines on:
+We welcome contributions! Please see [Contributing](https://github.com/saltines321-debug/hermes-brain/blob/main/CONTRIBUTING.md) for guidelines on:
+
 - Reporting bugs
 - Proposing features
 - Submitting pull requests
