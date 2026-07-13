@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hermes Brain — Public Agent Template</title>
+  <meta name="description" content="Hermes Brain is a public, zero-knowledge template for a modular agent skeleton.">
+  <style>
+    :root { --fg:#1a1a1a; --muted:#666; --accent:#2b6cb0; --bg:#fff; --border:#e5e7eb; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color:var(--fg); background:var(--bg); line-height:1.6; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem; }
+    h1 { font-size: 2rem; margin-bottom: .25rem; }
+    .sub { color: var(--muted); margin-top: 0; }
+    h2 { margin-top: 2.5rem; font-size: 1.25rem; border-bottom: 1px solid var(--border); padding-bottom: .4rem; }
+    ul { padding-left: 1.2rem; }
+    li { margin: .35rem 0; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { background:#f3f4f6; padding:.1rem .35rem; border-radius:4px; font-size:.9em; }
+    pre { background:#f3f4f6; padding:1rem; border-radius:6px; overflow-x:auto; }
+    pre code { background:none; padding:0; }
+    .features li { margin:.5rem 0; }
+    footer { margin-top: 3rem; color: var(--muted); font-size:.85rem; border-top:1px solid var(--border); padding-top:1rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🧠 Hermes Brain</h1>
+    <p class="sub">A public, zero-knowledge template for a modular agent skeleton.</p>
+
+    <p>Hermes Brain is a <strong>starting point for building your own brain logic</strong> — not a hosted platform or a distributed orchestration service. It ships the architecture and guardrails of an agentic system: a minimal core decision loop, capability hooks, a policy gate, and append-only memory — without embedding private history, learned behavior, or tuned configuration.</p>
+
+    <h2>Key features</h2>
+    <ul class="features">
+      <li><strong>Modular skeleton</strong> — a minimal core loop (<code>brain.py</code>) plus capability hooks you can extend (<code>capabilities/</code>).</li>
+      <li><strong>Policy gate</strong> — runtime and privacy rules that are safe by default (<code>allow_external_actions: false</code>, <code>retain_private_memory: false</code>, <code>redact_sensitive_fields: true</code>).</li>
+      <li><strong>Append-only memory</strong> — decisions and outcomes are logged to <code>memory/outcomes.jsonl</code>, one JSON object per line.</li>
+      <li><strong>Template vs. Sync modes</strong> — keep <code>memory/</code> private per agent, or commit and share it intentionally across instances.</li>
+      <li><strong>Public / private split</strong> — clean structure and guardrails ship publicly; private runtime state stays out of the template.</li>
+    </ul>
+
+    <h2>Quick start</h2>
+    <pre><code>git clone https://github.com/saltines321-debug/hermes-brain.git
+cd hermes-brain
+python3 brain.py</code></pre>
+    <p>This reads any JSON in <code>inbox/</code> and writes a decision report to <code>outbox/decisions.json</code>.</p>
+
+    <h2>Documentation</h2>
+    <ul>
+      <li><a href="https://github.com/saltines321-debug/hermes-brain/blob/main/README.md">README</a> — overview and suggested next steps</li>
+      <li><a href="https://github.com/saltines321-debug/hermes-brain/blob/main/docs/ARCHITECTURE.md">Architecture</a> — folder responsibilities and the template boundary</li>
+      <li><a href="https://github.com/saltines321-debug/hermes-brain/blob/main/docs/examples/MODULAR_REFERENCE.md">Modular reference</a> — the <code>core → providers → plugins</code> extension pattern</li>
+      <li><a href="https://github.com/saltines321-debug/hermes-brain/blob/main/docs/developer-setup.md">Developer setup</a> — bootstrapping locally</li>
+      <li><a href="https://github.com/saltines321-debug/hermes-brain/blob/main/docs/DEVEX.md">Developer experience</a> — validation, debugging, and standards</li>
+      <li><a href="https://github.com/saltines321-debug/hermes-brain/wiki">Wiki</a> — guides and references</li>
+    </ul>
+
+    <footer>
+      <p>MIT License · <a href="https://github.com/saltines321-debug/hermes-brain">github.com/saltines321-debug/hermes-brain</a></p>
+    </footer>
+  </div>
+</body>
+</html>
